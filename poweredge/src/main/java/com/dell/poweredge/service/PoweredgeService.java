@@ -20,10 +20,10 @@ public class PoweredgeService {
     @Value("${corpaggregator.url}")
     private String corpAggregatorUrl;
 
-    @Scheduled(fixedRate = 3000)
+    @Scheduled(fixedRate = 30000)
     public void sendTelemetryData() {
         TelemetryData data = generateRandomTelemetryData();
-        data.setNode("Varun VM");
+        data.setNode("Shashi's PC");
         try {
             ResponseEntity<ResponseDTO> response = restTemplate.postForEntity(corpAggregatorUrl, data, ResponseDTO.class);
             if (response.getStatusCode().is2xxSuccessful()) {

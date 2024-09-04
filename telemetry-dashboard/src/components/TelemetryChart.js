@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import './TelemetryChart.css';
 
 const TelemetryChart = () => {
@@ -34,22 +34,21 @@ const TelemetryChart = () => {
 
     return (
         <div className="telemetry-container">
-            <h2>Telemetry Data</h2>
             {Object.keys(latestDataByNode).map(node => (
                 <div key={node} className="node-section">
                     <h3>Node: {node}</h3>
-                    <ResponsiveContainer width="100%" height={400}>
-                        <LineChart data={[latestDataByNode[node]]}>
+                    <ResponsiveContainer width="100%" height={200}>
+                        <BarChart data={[latestDataByNode[node]]} layout="vertical">
                             <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="timestamp" tickFormatter={(tick) => new Date(tick).toLocaleTimeString()} />
-                            <YAxis />
+                            <XAxis type="number" />
+                            <YAxis type="category" dataKey="timestamp" tickFormatter={(tick) => new Date(tick).toLocaleTimeString()} />
                             <Tooltip labelFormatter={(label) => new Date(label).toLocaleString()} />
                             <Legend />
-                            <Line type="monotone" dataKey="temperature" stroke="#8884d8" name="Temperature" />
-                            <Line type="monotone" dataKey="networkSpeed" stroke="#82ca9d" name="Network Speed" />
-                            <Line type="monotone" dataKey="diskUtilization" stroke="#ffc658" name="Disk Utilization" />
-                            <Line type="monotone" dataKey="cpuUtilization" stroke="#ff7300" name="CPU Utilization" />
-                        </LineChart>
+                            <Bar dataKey="temperature" fill="#8884d8" name="Temperature" />
+                            <Bar dataKey="networkSpeed" fill="#82ca9d" name="Network Speed" />
+                            <Bar dataKey="diskUtilization" fill="#ffc658" name="Disk Utilization" />
+                            <Bar dataKey="cpuUtilization" fill="#ff7300" name="CPU Utilization" />
+                        </BarChart>
                     </ResponsiveContainer>
                 </div>
             ))}

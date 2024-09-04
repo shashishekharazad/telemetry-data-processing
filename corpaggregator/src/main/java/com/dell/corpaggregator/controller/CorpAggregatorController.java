@@ -19,7 +19,6 @@ public class CorpAggregatorController {
     @PostMapping("/telemetry")
     public ResponseDTO receiveData(@RequestBody TelemetryData data){
         service.saveTelemetryData(data);
-        System.out.println(data);
         ResponseDTO response = new ResponseDTO();
         response.setMessage("Received data successfully!");
         response.setTimestamp(LocalDateTime.now());
