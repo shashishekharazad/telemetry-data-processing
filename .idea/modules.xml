@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/iDRAC.iml" filepath="$PROJECT_DIR$/.idea/iDRAC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/poweredge/poweredge.iml" filepath="$PROJECT_DIR$/poweredge/poweredge.iml" />
+    </modules>
+  </component>
+</project>

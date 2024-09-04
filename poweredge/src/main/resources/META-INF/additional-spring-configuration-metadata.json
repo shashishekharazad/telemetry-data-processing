@@ -1,0 +1,18 @@
+{
+  "properties": [
+    {
+      "name": "corpaggregator.ssl.keyStoreType",
+      "type": "java.lang.String",
+      "description": "Description for corpaggregator.ssl.keyStoreType."
+    },
+    {
+      "name": "corpaggregator.username",
+      "type": "java.lang.String",
+      "description": "Description for corpaggregator.username."
+    },
+    {
+      "name": "corpaggregator.password",
+      "type": "java.lang.String",
+      "description": "Description for corpaggregator.password."
+    }
+  ] }
