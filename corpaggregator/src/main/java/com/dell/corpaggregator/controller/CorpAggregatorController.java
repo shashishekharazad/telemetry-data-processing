@@ -1,20 +1,33 @@
 package com.dell.corpaggregator.controller;
 
-import com.dell.corpaggregator.model.TelemetryDataDTO;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.dell.corpaggregator.model.ResponseDTO;
+import com.dell.corpaggregator.model.TelemetryData;
+import com.dell.corpaggregator.service.CorpAggregatorService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
 @RequestMapping("/corpag")
 public class CorpAggregatorController {
 
-    @PostMapping("/telemetry")
-    public String receiveData(@RequestBody TelemetryDataDTO data){
-        System.out.println(data);
-        System.out.println("Received data successfully at " + data.getTimestamp());
+    @Autowired
+    private CorpAggregatorService service;
 
-        return "Received data successfully!";
+    @PostMapping("/telemetry")
+    public ResponseDTO receiveData(@RequestBody TelemetryData data){
+        service.saveTelemetryData(data);
+        System.out.println(data);
+        ResponseDTO response = new ResponseDTO();
+        response.setMessage("Received data successfully!");
+        response.setTimestamp(LocalDateTime.now());
+        return response;
+    }
+
+    @GetMapping("/telemetry")
+    public List<TelemetryData> getTelemetryData(){
+        return service.getTelemetryByNode();
     }
 }
