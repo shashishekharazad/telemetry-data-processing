@@ -1,0 +1,39 @@
+version: '3'
+services:
+  corpaggregator:
+    build:
+      context: ./corpaggregator
+    ports:
+      - "8123:8123"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:h2:mem:testdb
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.h2.Driver
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD: password
+    networks:
+      - my-network
+
+  telemetry-dashboard:
+    build:
+      context: ./telemetry-dashboard
+    image: telemetry-dashboard
+    ports:
+      - "3000:80"
+    networks:
+      - my-network
+    depends_on:
+      - corpaggregator
+
+  poweredge:
+    build:
+      context: ./poweredge
+    ports:
+      - "8124:8124"
+    networks:
+      - my-network
+    depends_on:
+      - telemetry-dashboard
+
+networks:
+  my-network:
+    driver: bridge

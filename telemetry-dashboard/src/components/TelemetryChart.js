@@ -7,7 +7,7 @@ const TelemetryChart = () => {
 
     useEffect(() => {
         const fetchTelemetryData = () => {
-            fetch('http://127.0.0.1:8124/corpag/telemetry')
+            fetch('http://127.0.0.1:8123/corpag/telemetry"')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -27,7 +27,7 @@ const TelemetryChart = () => {
         };
 
         fetchTelemetryData(); // Initial fetch
-        const interval = setInterval(fetchTelemetryData, 30000); // Fetch every 30 seconds
+        const interval = setInterval(fetchTelemetryData, 1000); // Fetch every 30 seconds
 
         return () => clearInterval(interval); // Cleanup interval on component unmount
     }, []);
