@@ -1,54 +1,19 @@
 package com.dell.poweredge.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 public class TelemetryData {
+    private String node;
     private double temperature;
     private double networkSpeed;
     private double diskUtilization;
     private double cpuUtilization;
     private LocalDateTime timestamp;
-
-    // Getters and Setters
-    public double getTemperature() {
-        return temperature;
-    }
-
-    public void setTemperature(double temperature) {
-        this.temperature = temperature;
-    }
-
-    public double getNetworkSpeed() {
-        return networkSpeed;
-    }
-
-    public void setNetworkSpeed(double networkSpeed) {
-        this.networkSpeed = networkSpeed;
-    }
-
-    public double getDiskUtilization() {
-        return diskUtilization;
-    }
-
-    public void setDiskUtilization(double diskUtilization) {
-        this.diskUtilization = diskUtilization;
-    }
-
-    public double getCpuUtilization() {
-        return cpuUtilization;
-    }
-
-    public void setCpuUtilization(double cpuUtilization) {
-        this.cpuUtilization = cpuUtilization;
-    }
-
-    public LocalDateTime getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
-    }
 
     @Override
     public String toString() {

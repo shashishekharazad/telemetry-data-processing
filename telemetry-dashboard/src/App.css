@@ -1,0 +1,35 @@
+.App {
+  text-align: center;
+  background-color: #f0f2f5;
+  padding: 20px;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.App-heading {
+  background-color: white;
+  padding: 5px;
+  border-radius: 8px;
+  color: black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.App-header h1 {
+  font-size: 2rem;
+  margin: 0;
+  color: #61dafb;
+}
+
+.App-header h3 {
+  font-size: 1.2rem;
+  margin: 10px 0 0;
+  color: #a9a9a9;
+}

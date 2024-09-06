@@ -1,41 +1,23 @@
 package com.dell.corpaggregator.model;
 
-import lombok.AllArgsConstructor;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Getter
 @Setter
-@AllArgsConstructor
+@Getter
 public class TelemetryDataDTO {
-    // Getters and Setters
+
+    private String node;
     private double temperature;
     private double networkSpeed;
     private double diskUtilization;
     private double cpuUtilization;
     private LocalDateTime timestamp;
 
-    public void setTemperature(double temperature) {
-        this.temperature = temperature;
-    }
-
-    public void setNetworkSpeed(double networkSpeed) {
-        this.networkSpeed = networkSpeed;
-    }
-
-    public void setDiskUtilization(double diskUtilization) {
-        this.diskUtilization = diskUtilization;
-    }
-
-    public void setCpuUtilization(double cpuUtilization) {
-        this.cpuUtilization = cpuUtilization;
-    }
-
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
-    }
 
     @Override
     public String toString() {
@@ -47,4 +29,6 @@ public class TelemetryDataDTO {
                 ", timestamp=" + timestamp +
                 '}';
     }
+
+
 }
