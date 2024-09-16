@@ -18,14 +18,16 @@ public class CorpAggregatorController {
 
     @PostMapping("/telemetry")
     public ResponseDTO receiveData(@RequestBody TelemetryData data) {
-        service.saveTelemetryData(data);
+        if (data != null) {
+            service.saveTelemetryData(data);
+        }
         ResponseDTO response = new ResponseDTO();
         response.setMessage("Received data successfully!");
         response.setTimestamp(LocalDateTime.now());
         return response;
     }
 
-    @GetMapping("/telemetry")
+    @GetMapping("/showtelemetry")
     public List<TelemetryData> getTelemetryData() {
         return service.getTelemetryByNode();
     }

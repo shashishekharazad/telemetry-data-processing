@@ -18,23 +18,26 @@ public class PoweredgeService {
     private final Random random = new Random();
 
     @Value("${corpaggregator.url}")
-    private String corpAggregatorUrl;
+    String corpAggregatorUrl;
 
     @Scheduled(fixedRate = 3000)
-    public void sendTelemetryData() {
+    public String sendTelemetryData() {
         TelemetryData data = generateRandomTelemetryData();
-        data.setNode("Dell 6");
+        int ofcDigit = random.nextInt(8) + 1;
+        data.setNode("PowerEdge Server " + ofcDigit);
+        String str = "";
         try {
             ResponseEntity<ResponseDTO> response = restTemplate.postForEntity(corpAggregatorUrl, data, ResponseDTO.class);
             if (response.getStatusCode().is2xxSuccessful()) {
-                System.out.println("Telemetry data sent successfully: " + response.getBody().getMessage());
+                str = "Telemetry data sent successfully: " + response.getBody().getMessage();
             } else {
-                System.err.println("Failed to send telemetry data. Status code: " + response.getStatusCode());
+                str =  "Failed to send telemetry data. Status code: " + response.getStatusCode();
             }
         } catch (RestClientException e) {
             System.err.println("Error while sending telemetry data: " + e.getMessage());
             e.printStackTrace();
         }
+        return str;
     }
 
     public TelemetryData generateRandomTelemetryData() {

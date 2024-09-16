@@ -25,7 +25,8 @@ public class TelemetryData {
     @Override
     public String toString() {
         return "TelemetryData{" +
-                "temperature=" + temperature +
+                "node=" + node +
+                ", temperature=" + temperature +
                 ", networkSpeed=" + networkSpeed +
                 ", diskUtilization=" + diskUtilization +
                 ", cpuUtilization=" + cpuUtilization +

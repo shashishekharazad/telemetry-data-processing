@@ -1,8 +1,8 @@
-version: '3'
 services:
   corpaggregator:
     build:
       context: ./corpaggregator
+    container_name: corpaggregator
     ports:
       - "8123:8123"
     environment:
@@ -17,8 +17,9 @@ services:
     build:
       context: ./telemetry-dashboard
     image: telemetry-dashboard
+    container_name: telemetry
     ports:
-      - "3000:80"
+      - "8080:80"
     networks:
       - my-network
     depends_on:
@@ -27,12 +28,13 @@ services:
   poweredge:
     build:
       context: ./poweredge
+    container_name: poweredge
     ports:
       - "8124:8124"
     networks:
       - my-network
     depends_on:
-      - telemetry-dashboard
+      - corpaggregator
 
 networks:
   my-network:

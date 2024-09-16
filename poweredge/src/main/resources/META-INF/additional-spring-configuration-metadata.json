@@ -14,5 +14,10 @@
       "name": "corpaggregator.password",
       "type": "java.lang.String",
       "description": "Description for corpaggregator.password."
+    },
+    {
+      "name": "corpaggregator.url",
+      "type": "java.lang.String",
+      "description": "Description for corpaggregator.url."
     }
   ] }

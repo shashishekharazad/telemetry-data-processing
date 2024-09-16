@@ -17,6 +17,10 @@ public class PoweredgeController {
         this.service = service;
     }
 
+    @GetMapping("/test")
+    public String testApi(){
+        return "Service is running!";
+    }
     @GetMapping("/send")
     public void sendTelemetry(){
         service.sendTelemetryData();
