@@ -13,8 +13,11 @@ public class CorpAggregatorService {
     @Autowired
     private CorpAgrRepository repository;
 
-    public List<TelemetryData> getTelemetryByNode() {
+    public List<TelemetryData> getTelemetryData() {
         return repository.findAll();
+    }
+    public List<TelemetryData> getTelemetryByNode(String nodeName) {
+        return repository.findByNode(nodeName);
     }
 
     public void saveTelemetryData(TelemetryData data) {

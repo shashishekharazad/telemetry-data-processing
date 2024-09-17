@@ -28,7 +28,11 @@ public class CorpAggregatorController {
     }
 
     @GetMapping("/showtelemetry")
-    public List<TelemetryData> getTelemetryData() {
-        return service.getTelemetryByNode();
+    public List<TelemetryData> getTelemetryData(@RequestParam(name = "nodeName", required = false) String nodeName) {
+        if (nodeName != null && !nodeName.isEmpty()) {
+            return service.getTelemetryByNode(nodeName);
+        } else {
+            return service.getTelemetryData();
+        }
     }
 }
